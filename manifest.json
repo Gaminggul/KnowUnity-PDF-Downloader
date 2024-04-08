@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "KnowUnity PDF Downloader",
+  "version": "1.2",
+  "description": "Download PDFs from KnowUnity",
+  "icons": { "32": "knowunity.png", "128": "knowunity.png" },
+  "permissions": ["activeTab", "downloads", "scripting"],
+  "host_permissions": [
+    "https://apiedge-eu-central-1.knowunity.com/*",
+    "https://knowunity.de/app/knows/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://knowunity.de/app/knows/*"],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
